@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- CODE INJECTOR -->
+    <label style="margin-top: 10px; font-weight: 600; font-size: 30px;">Code Injection</label>
+    <form method="POST" id="code_injector_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Target Port</label>
+            <input type="text" class="form-control" id="code_injector_port" placeholder="Enter target port" required>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <div class="alert alert-primary" role="alert" style="margin-top: 10px; margin-bottom: 10px;">
+        1. Run ARP Spoof
+        <br>
+        2. Start Code Injection
+        <br>
+        3. Do not use with Replace Downloads
+    </div>
+    <div id="code_injector_result">
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #spoofing-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/websocket_js/code_injector.js'%}"></script>
+{% endblock %}

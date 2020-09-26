@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+	<!-- MD5 DECRYPT -->
+	<label style="margin-top: 10px; font-weight: 600; font-size: 30px;">MD5 DECRYPT</label>
+	<form method="POST" id="form">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>Enter MD5 hash:</label>
+			<input type="text" class="form-control" id="hash_to_word" placeholder="Enter a MD5 hash: password" required>
+		</div>
+		<div class="form-group">
+			<label>Enter MD5 dictionary:</label>
+			<input type="text" class="form-control" id="dictionary" placeholder="Enter a dictionary: Ex. md5.txt" required>
+		</div>
+		<button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+	</form>
+	<div id="result">
+	</div>
+	<script type="text/javascript">
+	$(function () {
+	$('#myTab #scan-drop').tab('show')
+		});
+	</script>
+	<script src="{% static 'js/websocket_js/md5_decrypt.js'%}"></script>
+{% endblock %}

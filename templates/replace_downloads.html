@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- REPLACE DOWNLOADS -->
+    <label style="margin-top: 10px; font-weight: 600; font-size: 30px;">File Injection</label>
+    <form method="POST" id="replace_downloads_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Target Port</label>
+            <input type="text" class="form-control" id="replace_downloads_port" placeholder="Enter target port. Ex. 80" required>
+        </div>
+        <div class="form-group">
+            <label>File location</label>
+            <input type="text" class="form-control" id="replace_downloads_file_location" placeholder="Enter file location. Ex. http://10.0.2.5/evil/" required>
+        </div>
+        <div class="form-group">
+            <label>File name</label>
+            <input type="text" class="form-control" id="replace_downloads_file_name" placeholder="Enter file name. Ex. WinStart.exe" required>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+    </form>
+    <div class="alert alert-primary" role="alert" style="margin-top: 10px; margin-bottom: 10px;">
+        1. Run ARP Spoof
+        <br>
+        2. Run apache2 service in the console
+        <br>
+        2. Start File Injection
+        <br>
+        3. Do not use with Code Injection
+    </div>
+    <div id="replace_downloads_result">
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #spoofing-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/websocket_js/replace_downloads.js'%}"></script>
+{% endblock %}

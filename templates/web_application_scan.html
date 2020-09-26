@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- WEB APPLICATION SCAN -->
+    <label style="margin-top: 10px; font-weight: 600; font-size: 30px;">WEB APPLICATION SCAN</label>
+    <form method="POST" id="form">
+        {% csrf_token %}
+        <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Authentification needed
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample" style="margin-bottom: 10px;">
+            <div class="card card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="inputUsername" placeholder="Input username field name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="username" placeholder="username">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="inputPassword" placeholder="Input password field name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="password" placeholder="password">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="inputSubmit" placeholder="Input submit name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="submitType" placeholder="Submit type">
+                    </div>
+                </div>
+            </div>
+        </div >
+        <div class="form-group">
+            <label>Target url</label>
+            <input type="text" class="form-control" id="target_url" placeholder="Enter Target url: Ex. vulnweb.com" required>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+    </form>
+    <div id="result">
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #scan-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/websocket_js/web_application_scan.js'%}"></script>
+{% endblock %}

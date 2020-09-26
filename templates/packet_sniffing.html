@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+	<!-- ARP SPOOFING -->
+	<label style="margin-top: 10px; font-weight: 600; font-size: 30px;">PACKET SNIFFING</label>
+	<form method="POST" id="form_packet_sniffing">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>Target Interface</label>
+			<input type="text" class="form-control" id="packet_sniffing_interface" placeholder="Enter Target Interface" required>
+		</div>
+		<button type="submit" class="btn btn-success" style="margin-bottom: 10px;">Submit</button>
+	</form>
+	<div class="alert alert-primary" role="alert" style="margin-top: 10px; margin-bottom: 10px;">
+        Run ARP Spoofing in adcance.
+    </div>
+    <label>Logs</label>
+	<textarea style="resize: none; margin-top: 10px; margin-bottom: 10px;" class="form-control" id="packet_sniffing_textarea"
+	rows="6" readonly></textarea>
+    <label>Login information</label>
+	<textarea style="resize: none; margin-top: 10px; margin-bottom: 10px;" class="form-control" id="login_info_textarea"
+	rows="6" readonly></textarea>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #spoofing-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/main.js'%}"></script>
+{% endblock %}

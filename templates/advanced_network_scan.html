@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- ADVANCED NETWORK SCAN -->
+    <label style="margin-top: 10px; font-weight: 600; font-size: 30px;">ADVANCED NETWORK SCAN</label>
+    <form method="POST" id="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Target IP</label>
+            <input type="text" class="form-control" id="target_ip" placeholder="Enter Target IP" required>
+        </div>
+        <div class="form-group">
+            <label>Scan Type</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="1">Intense scan</option>
+                    <option value="2">Intense scan + UPD</option>
+                    <option value="3">Intense scan + TCP</option>
+                    <option value="4">Quick scan</option>
+                    <option value="5">Quick scan+</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+    </form>
+    <div id="result">
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #scan-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/websocket_js/advanced_network_scan.js'%}"></script>
+{% endblock %}

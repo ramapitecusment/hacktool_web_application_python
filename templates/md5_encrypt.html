@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+	<!-- MD5 ENCRYPT -->
+	<label style="margin-top: 10px; font-weight: 600; font-size: 30px;">MD5 ENCRYPT</label>
+	<form method="POST" id="form">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>Enter a word here to get its MD5 hash:</label>
+			<input type="text" class="form-control" id="word_to_hash" placeholder="Enter a word: password" required>
+		</div>
+		<button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+	</form>
+	<div id="result">
+	</div>
+	<script type="text/javascript">
+	$(function () {
+	$('#myTab #scan-drop').tab('show')
+		});
+	</script>
+	<script src="{% static 'js/websocket_js/md5_encrypt.js'%}"></script>
+{% endblock %}

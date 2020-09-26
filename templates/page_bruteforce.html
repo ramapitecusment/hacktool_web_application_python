@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+	<!-- PAGE BRUTEFORCE -->
+	<label style="margin-top: 10px; font-weight: 600; font-size: 30px;">PAGE BRUTEFORCE</label>
+	<form method="POST" id="form">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>Target url</label>
+			<input type="text" class="form-control" id="target_url" placeholder="Enter Target url: Ex. vulnweb.com" required>
+		</div>
+		<div class="form-group">
+			<label>User list</label>
+			<input type="text" class="form-control" id="user_list" placeholder="Enter user list: users.txt" required>
+		</div>
+		<div class="form-group">
+			<label>Password list</label>
+			<input type="text" class="form-control" id="password_list" placeholder="Enter password list: passwords.txt" required>
+		</div>
+		<div class="form-group">
+			<label>Authorisation failed indicator</label>
+			<input type="text" class="form-control" id="FailStr" placeholder="Enter Authorisation failed indicator: Ex. Fail" required>
+		</div>
+		<button type="submit" class="btn btn-success" style="margin-bottom: 10px">Submit</button>
+	</form>
+	<div id="result">
+	</div>
+	<script type="text/javascript">
+	$(function () {
+	$('#myTab #scan-drop').tab('show')
+		});
+	</script>
+	<script src="{% static 'js/websocket_js/page_bruteforce.js'%}"></script>
+{% endblock %}

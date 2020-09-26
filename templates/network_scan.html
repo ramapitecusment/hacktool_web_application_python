@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+	<!-- NETWORK SCAN -->
+	<label style="margin-top: 10px; font-weight: 600; font-size: 30px;">NETWORK SCAN</label>
+	<form method="POST" id="form_network_scan">
+		{% csrf_token %}
+		<div class="form-group">
+			<label>IP Range to Scan:</label>
+			<input type="text" name="ip_scan" class="form-control" id="ip_net_scan"
+			aria-describedby="emailHelp" placeholder="Enter Network IP. Ex: 10.0.2.1/24" required>
+		</div>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</form>
+	<textarea style="resize: none; margin-top: 10px; margin-bottom: 10px;" class="form-control" id="network_scan_textarea"
+	rows="6" readonly></textarea>
+	<script type="text/javascript">
+	$(function () {
+	$('#myTab #scan-drop').tab('show')
+	});
+	</script>
+    <script src="{% static 'js/main.js'%}"></script>
+{% endblock %}

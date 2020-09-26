@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- ARP SPOOFING -->
+    <label style="margin-top: 10px; font-weight: 600; font-size: 30px;">ARP SPOOFING</label>
+    <form method="POST" id="form_arp_spoofing">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Target IP</label>
+            <input type="text" class="form-control" id="arp_target_ip" placeholder="Enter Target IP" required>
+        </div>
+        <div class="form-group">
+            <label>Gateway IP</label>
+            <input type="text" class="form-control" id="arp_gateway_ip" placeholder="Enter Gateway IP" required>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <button id="cancelARPspoof" style="margin-top: 10px; margin-bottom: 10px;" type="submit" class="btn btn-primary">Cancel</button>
+    <div id="arp_spoofing_result">
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    $('#myTab #spoofing-drop').tab('show')
+    });
+    </script>
+    <script src="{% static 'js/main.js'%}"></script>
+{% endblock %}
